@@ -1,0 +1,77 @@
+---
+import Reveal from "./Reveal.astro";
+
+const groups = [
+  {
+    label: "Engineering",
+    items: [".NET", "C#", "TypeScript", "JavaScript", "Node.js", "Full-lifecycle SDLC"],
+  },
+  {
+    label: "Cloud & Architecture",
+    items: [
+      "Azure",
+      "Google Cloud",
+      "Cloud Foundry",
+      "Microservices",
+      "Domain-Driven Design",
+      "SaaS platforms",
+      "Distributed systems",
+    ],
+  },
+  {
+    label: "Data & ML",
+    items: [
+      "MS SQL Server",
+      "Oracle",
+      "Cosmos DB",
+      "NoSQL",
+      "Machine Learning",
+      "Business intelligence",
+    ],
+  },
+  {
+    label: "Leadership & Practice",
+    items: [
+      "Engineering strategy",
+      "Mentoring leaders",
+      "Agile",
+      "CI/CD",
+      "TDD",
+      "Modernization",
+      "Organizational growth",
+    ],
+  },
+];
+---
+
+<section id="skills" class="mx-auto max-w-6xl px-4 py-20 md:py-28">
+  <Reveal class="mb-10">
+    <div class="mb-3 text-xs uppercase tracking-[0.2em] text-muted">Toolkit</div>
+    <h2 class="font-display text-4xl tracking-tight md:text-5xl">
+      What I bring to the table.
+    </h2>
+  </Reveal>
+
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    {
+      groups.map((g, i) => (
+        <Reveal delay={i * 80}>
+          <div class="glass rounded-2xl p-6">
+            <div class="mb-4 flex items-center gap-3">
+              <span
+                class="h-2 w-2 rounded-full"
+                style="background: linear-gradient(135deg, var(--g1), var(--g2), var(--g3));"
+              />
+              <h3 class="text-sm font-medium uppercase tracking-widest text-fg/80">
+                {g.label}
+              </h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {g.items.map((it) => <span class="chip">{it}</span>)}
+            </div>
+          </div>
+        </Reveal>
+      ))
+    }
+  </div>
+</section>

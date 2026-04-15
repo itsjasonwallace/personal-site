@@ -1,0 +1,72 @@
+---
+import Reveal from "./Reveal.astro";
+
+const titles = [
+  "Senior Engineering Manager",
+  "Associate Director of Development",
+  "Solution Architect",
+  "Director of Technology",
+  "Lead Software Engineer",
+];
+---
+
+<section id="about" class="mx-auto max-w-6xl px-4 py-20 md:py-28">
+  <div class="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-16">
+    <Reveal class="md:col-span-5">
+      <div class="relative">
+        <div
+          class="absolute -inset-6 -z-10 rounded-[2rem] blur-3xl"
+          style="background: conic-gradient(from 140deg, var(--g1), var(--g2), var(--g3), var(--g1)); opacity: 0.25;"
+        >
+        </div>
+        <div class="glass overflow-hidden rounded-2xl">
+          <img
+            src="/portrait.webp"
+            alt="Jason Wallace — portrait"
+            width="1280"
+            height="1600"
+            loading="eager"
+            fetchpriority="high"
+            class="aspect-[4/5] h-full w-full object-cover"
+          />
+        </div>
+      </div>
+    </Reveal>
+
+    <div class="space-y-6 text-lg leading-relaxed text-fg/75 md:col-span-7">
+      <div>
+        <div class="mb-3 text-xs uppercase tracking-[0.2em] text-muted">About</div>
+        <h2 class="font-display text-4xl tracking-tight md:text-5xl">
+          Bridging <span class="gradient-text">code</span> and
+          <span class="gradient-text">strategy.</span>
+        </h2>
+      </div>
+      <Reveal delay={80}>
+        <p>
+          Strategic technology leader focused on turning engineering from a cost
+          center into a driver of innovation and revenue. I align IT roadmaps
+          with corporate objectives so every initiative moves the business —
+          operational efficiency, competitive advantage, sustainable growth.
+        </p>
+      </Reveal>
+      <Reveal delay={160}>
+        <p>
+          Rooted in full-lifecycle software engineering, I guide high-stakes
+          modernization — monolith to microservices with Domain-Driven Design,
+          cloud-native on Azure, Google Cloud, and Cloud Foundry, and
+          enterprise data across SQL, NoSQL, and ML. In parallel I invest in
+          engineering leaders and institutionalize Agile, CI/CD, and TDD — so
+          velocity, reliability, and craft compound together.
+        </p>
+      </Reveal>
+      <Reveal delay={240}>
+        <div class="mb-3 text-xs uppercase tracking-[0.2em] text-muted">
+          Titles along the way
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {titles.map((t) => <span class="chip">{t}</span>)}
+        </div>
+      </Reveal>
+    </div>
+  </div>
+</section>

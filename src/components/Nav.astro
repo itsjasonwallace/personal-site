@@ -1,0 +1,52 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+const links = [
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#contact", label: "Contact" },
+];
+const linkedin = "https://www.linkedin.com/in/itsjasonwallace";
+---
+
+<header class="sticky top-0 z-50">
+  <div class="mx-auto mt-4 max-w-6xl px-4">
+    <nav
+      class="glass flex items-center justify-between rounded-full px-4 py-2.5"
+      aria-label="Primary"
+    >
+      <a href="#top" class="flex items-center gap-2 text-sm font-medium tracking-tight">
+        <span
+          class="inline-block h-2.5 w-2.5 rounded-full"
+          style="background: linear-gradient(135deg, var(--g1), var(--g2), var(--g3));"
+        ></span>
+        <span class="text-fg/90">Jason Wallace</span>
+      </a>
+      <ul class="hidden items-center gap-1 md:flex">
+        {
+          links.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                class="surface-hover rounded-full px-3 py-1.5 text-sm text-fg/70 hover:text-fg"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="flex items-center gap-2">
+        <ThemeToggle />
+        <a
+          href={linkedin}
+          target="_blank"
+          rel="noopener"
+          class="surface surface-hover rounded-full px-3.5 py-1.5 text-sm text-fg/90"
+        >
+          LinkedIn →
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
