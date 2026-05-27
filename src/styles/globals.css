@@ -1,24 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #efe7d2;
+  --color-paper: #fbfaf6;
+  --color-ink: #1a1a1a;
+  --color-ink-soft: #4a4a4a;
+  --color-muted: #8a8377;
+  --color-rule: #e6e1d1;
+  --color-accent: #8b2a1f;
+  --color-accent-soft: #c36a5d;
+  --color-status: #3ebe5a;
+
+  --font-sans: "Inter Variable", Inter, system-ui, sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
 
 @layer base {
-  :root {
-    --ivory: 239 231 210;
-    --paper: 251 250 246;
-    --ink: 26 26 26;
-    --ink-soft: 74 74 74;
-    --muted: 138 131 119;
-    --rule: 230 225 209;
-    --accent: 139 42 31;
-    --accent-soft: 195 106 93;
-    --status: 62 190 90;
-  }
-
   html {
-    background: rgb(var(--paper));
-    color: rgb(var(--ink));
-    font-family: "Inter Variable", Inter, system-ui, sans-serif;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
     font-feature-settings: "cv11", "ss01", "ss03";
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
@@ -30,12 +32,12 @@
   }
 
   ::selection {
-    background: rgb(var(--accent) / 0.85);
-    color: rgb(var(--paper));
+    background: color-mix(in oklab, var(--color-accent) 85%, transparent);
+    color: var(--color-paper);
   }
 
   :focus-visible {
-    outline: 2px solid rgb(var(--accent));
+    outline: 2px solid var(--color-accent);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -43,82 +45,55 @@
 
 @layer components {
   .label {
-    @apply font-mono text-[11px] uppercase tracking-[0.18em];
-    color: rgb(var(--muted));
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-muted;
   }
 
   .rule {
-    border: 1px solid rgb(var(--rule));
+    @apply border border-rule;
   }
 
   .card {
-    background: rgb(var(--paper));
-    border: 1px solid rgb(var(--rule));
-    border-radius: 6px;
+    @apply rounded-md border border-rule bg-paper;
   }
 
   .chip {
-    @apply inline-flex items-center px-2.5 py-1 text-[12.5px];
-    color: rgb(var(--ink) / 0.85);
-    background: rgb(var(--paper));
-    border: 1px solid rgb(var(--rule));
-    border-radius: 4px;
+    @apply inline-flex items-center rounded border border-rule bg-paper px-2.5 py-1 text-[12.5px] text-ink/85;
   }
 
   .accent-square {
-    display: inline-block;
-    width: 0.55rem;
-    height: 0.55rem;
-    background: rgb(var(--accent));
-    border-radius: 1px;
+    @apply inline-block size-[0.55rem] rounded-[1px] bg-accent;
   }
 
   .btn-ink {
-    @apply inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium;
-    background: rgb(var(--ink));
-    color: rgb(var(--paper));
-    border-radius: 4px;
-    transition: background-color 0.18s ease;
-  }
-  .btn-ink:hover {
-    background: rgb(var(--ink) / 0.88);
+    @apply inline-flex items-center gap-2 rounded bg-ink px-4 py-2.5 text-sm font-medium text-paper transition-colors duration-200 hover:bg-ink/90;
   }
 
   .btn-accent {
-    @apply inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium;
-    background: rgb(var(--accent));
-    color: rgb(var(--paper));
-    border-radius: 4px;
-    transition: background-color 0.18s ease;
-  }
-  .btn-accent:hover {
-    background: rgb(var(--accent) / 0.88);
+    @apply inline-flex items-center gap-2 rounded bg-accent px-4 py-2.5 text-sm font-medium text-paper transition-colors duration-200 hover:bg-accent/90;
   }
 
   .hairline {
-    height: 1px;
-    background: rgb(var(--rule));
+    @apply h-px bg-rule;
   }
 }
 
-@layer utilities {
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(10px);
+  will-change: opacity, transform;
+}
+
+[data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.55s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
   [data-reveal] {
-    opacity: 0;
-    transform: translateY(10px);
-    will-change: opacity, transform;
-  }
-
-  [data-reveal][data-revealed="true"] {
     opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.55s cubic-bezier(0.2, 0.7, 0.2, 1),
-      transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    [data-reveal] {
-      opacity: 1;
-      transform: none;
-    }
+    transform: none;
   }
 }
