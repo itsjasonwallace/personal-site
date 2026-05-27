@@ -1,55 +1,13 @@
 ---
-import Reveal from "./Reveal.astro";
-const linkedin = "https://www.linkedin.com/in/itsjasonwallace";
+import CTABanner from "./CTABanner.astro";
 const year = new Date().getFullYear();
 ---
 
-<section id="contact" class="mx-auto max-w-6xl px-4 py-24 md:py-32">
-  <Reveal>
-    <div class="glass relative overflow-hidden rounded-3xl p-10 md:p-16">
-      <div
-        class="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full blur-3xl"
-        style="background: radial-gradient(closest-side, var(--g1), transparent 70%); opacity: 0.5;"
-      >
-      </div>
-      <div
-        class="pointer-events-none absolute -bottom-24 -right-24 h-80 w-80 rounded-full blur-3xl"
-        style="background: radial-gradient(closest-side, var(--g3), transparent 70%); opacity: 0.45;"
-      >
-      </div>
-
-      <div class="relative">
-        <div class="mb-4 text-xs uppercase tracking-[0.2em] text-muted">
-          Let's talk
-        </div>
-        <h2
-          class="font-display tracking-tight"
-          style="font-size: clamp(2rem, 5vw, 3.75rem); line-height: 1.05;"
-        >
-          If the arc resonates,
-          <span class="gradient-text">let's compare notes.</span>
-        </h2>
-        <p class="mt-5 max-w-xl text-lg leading-relaxed text-fg/70">
-          Open to conversations about engineering leadership, platform &
-          AI strategy, fractional work, and advisory roles.
-        </p>
-
-        <div class="mt-8 flex flex-wrap items-center gap-3">
-          <a
-            href={linkedin}
-            target="_blank"
-            rel="noopener"
-            class="btn-primary group px-6 py-3.5 text-base"
-          >
-            Connect on LinkedIn
-            <span class="transition group-hover:translate-x-0.5">→</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </Reveal>
-
-  <footer class="mt-16 text-xs text-muted">
-    © {year} Jason Wallace. All rights reserved.
+<section id="contact">
+  <CTABanner />
+  <footer
+    class="mt-6 flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[0.18em] text-muted"
+  >
+    <span>© {year} Jason Wallace</span>
   </footer>
 </section>

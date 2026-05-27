@@ -1,57 +1,48 @@
 ---
 import Reveal from "./Reveal.astro";
-const linkedin = "https://www.linkedin.com/in/itsjasonwallace";
-const monogram = "JW";
+import StatsBar from "./StatsBar.astro";
+
+const eyebrows = ["Engineering Leader", "Solution Architect", "AI-Native"];
 ---
 
-<section id="top" class="relative mx-auto max-w-6xl px-4 pt-20 pb-16 md:pt-36 md:pb-44">
-  <Reveal class="mb-8 flex items-center gap-4">
-    <div class="relative">
-      <div
-        class="flex h-16 w-16 items-center justify-center rounded-full text-lg font-medium tracking-wider text-white"
-        style="background: conic-gradient(from 140deg, var(--g1), var(--g2), var(--g3), var(--g1));"
-      >
-        <span class="rounded-full bg-bg/85 px-3 py-2 backdrop-blur-sm">{monogram}</span>
-      </div>
-      <div
-        class="absolute inset-0 -z-10 rounded-full blur-2xl"
-        style="background: conic-gradient(from 140deg, var(--g1), var(--g2), var(--g3), var(--g1)); opacity: 0.5;"
-      >
-      </div>
-    </div>
-    <div class="text-sm text-muted">
-      <div class="text-fg/80">Technology Leader</div>
-      <div>Engineering · Architecture · Leadership · AI</div>
+<section class="pt-2 md:pt-4">
+  <Reveal>
+    <div
+      class="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.18em] text-accent"
+    >
+      {
+        eyebrows.map((e, i) => (
+          <>
+            {i > 0 && <span class="text-muted">·</span>}
+            <span>{e}</span>
+          </>
+        ))
+      }
     </div>
   </Reveal>
 
   <Reveal delay={80}>
     <h1
-      class="font-display tracking-tight"
-      style="font-size: clamp(2.25rem, 7vw, 5.75rem); line-height: 1.05; padding-top: 0.08em;"
+      class="mt-7 font-display tracking-tight text-ink"
+      style="font-size: clamp(2.5rem, 5.4vw, 4.5rem); line-height: 1.02;"
     >
-      <span class="block text-fg/95">Jason Wallace.</span>
-      <span class="block gradient-text">More than two decades of building.</span>
+      I lead engineering orgs and <em class="italic text-accent"
+        >design the systems</em
+      > they build.
     </h1>
   </Reveal>
 
-  <Reveal delay={160} class="mt-10 flex flex-wrap items-center gap-3">
-    <a
-      href={linkedin}
-      target="_blank"
-      rel="noopener"
-      class="btn-primary group px-5 py-3 text-sm"
+  <Reveal delay={160}>
+    <p
+      class="mt-7 max-w-[58ch] text-[17px] leading-relaxed text-ink-soft"
     >
-      <span>Connect on LinkedIn</span>
-      <span class="transition group-hover:translate-x-0.5">→</span>
-    </a>
-    <a
-      href="#pillars"
-      class="surface surface-hover inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm text-fg/85"
-    >
-      See the arc ↓
-    </a>
+      Twenty-four years of full-lifecycle engineering. Twelve leading the people
+      who do it. Today, leading Wealth & Asset Management Engineering at Charles
+      Schwab — and looking for what's next.
+    </p>
   </Reveal>
 
-  <div class="hairline mt-24"></div>
+  <Reveal delay={220} class="mt-10">
+    <StatsBar />
+  </Reveal>
 </section>

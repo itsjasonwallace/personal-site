@@ -1,0 +1,75 @@
+---
+const linkedin = "https://www.linkedin.com/in/itsjasonwallace";
+
+const meta = [
+  { label: "Based", value: "Denver, CO" },
+  {
+    label: "Now",
+    value: "Senior Engineering Manager,",
+    line2: "Charles Schwab — WAME",
+  },
+  {
+    label: "Open to",
+    value: "Director / Principal / Enterprise / Solution Architect",
+  },
+];
+---
+
+<aside class="bg-ivory lg:sticky lg:top-0 lg:self-start">
+  <div class="flex flex-col px-7 py-7">
+    <div class="overflow-hidden rounded-[4px]">
+      <img
+        src="/portrait.webp"
+        alt="Jason Wallace — portrait"
+        width="1280"
+        height="1600"
+        loading="eager"
+        fetchpriority="high"
+        class="aspect-[4/5] h-full w-full object-cover grayscale"
+      />
+    </div>
+
+    <div class="mt-6">
+      <h1 class="font-display text-[28px] leading-none tracking-tight text-ink">
+        Jason Wallace
+      </h1>
+      <p class="mt-2 font-display italic text-[15px] leading-snug text-ink-soft">
+        Engineering leader & enterprise architect.<br />AI-native.
+      </p>
+    </div>
+
+    <div class="mt-7 space-y-5">
+      {
+        meta.map((m) => (
+          <div>
+            <div class="label">{m.label}</div>
+            <div class="mt-1.5 text-[13.5px] leading-snug text-ink">
+              {m.value}
+              {m.line2 && (
+                <>
+                  <br />
+                  {m.line2}
+                </>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <a
+      href={linkedin}
+      target="_blank"
+      rel="noopener"
+      class="btn-ink mt-7 w-full justify-center"
+    >
+      Connect on LinkedIn <span aria-hidden="true">→</span>
+    </a>
+
+    <div
+      class="mt-10 font-mono text-[10.5px] uppercase tracking-[0.18em] text-muted"
+    >
+      v.2026.05
+    </div>
+  </div>
+</aside>

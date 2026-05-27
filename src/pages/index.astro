@@ -1,20 +1,28 @@
 ---
 import Base from "../layouts/Base.astro";
-import Nav from "../components/Nav.astro";
+import Sidebar from "../components/Sidebar.astro";
 import Hero from "../components/Hero.astro";
-import Pillars from "../components/Pillars.astro";
 import About from "../components/About.astro";
+import HowIWork from "../components/HowIWork.astro";
+import Career from "../components/Career.astro";
 import Skills from "../components/Skills.astro";
 import Contact from "../components/Contact.astro";
 ---
 
 <Base>
-  <Nav />
-  <main>
-    <Hero />
-    <About />
-    <Pillars />
-    <Skills />
-    <Contact />
-  </main>
+  <div class="lg:grid lg:grid-cols-[320px_minmax(0,1fr)]">
+    <Sidebar />
+    <main class="lg:col-start-2">
+      <div
+        class="mx-auto max-w-[820px] space-y-24 px-6 py-12 md:px-10 md:py-16 lg:px-16 lg:py-20"
+      >
+        <Hero />
+        <About />
+        <HowIWork />
+        <Career />
+        <Skills />
+        <Contact />
+      </div>
+    </main>
+  </div>
 </Base>

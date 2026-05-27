@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import Nav from "../components/Nav.astro";
+import Sidebar from "../components/Sidebar.astro";
 import Reveal from "../components/Reveal.astro";
 ---
 
@@ -8,55 +8,44 @@ import Reveal from "../components/Reveal.astro";
   title="Not found — Jason Wallace"
   description="The page you're looking for doesn't exist."
 >
-  <Nav />
-  <main>
-    <section class="relative mx-auto max-w-6xl px-4 pt-24 pb-32 md:pt-36 md:pb-44">
-      <Reveal class="mb-8 flex items-center gap-4">
-        <div class="relative">
-          <div
-            class="flex h-16 w-16 items-center justify-center rounded-full text-lg font-medium tracking-wider text-white"
-            style="background: conic-gradient(from 140deg, var(--g1), var(--g2), var(--g3), var(--g1));"
+  <div class="lg:grid lg:grid-cols-[320px_minmax(0,1fr)]">
+    <Sidebar />
+    <main class="lg:col-start-2">
+      <div
+        class="mx-auto max-w-[820px] px-6 py-12 md:px-10 md:py-16 lg:px-16 lg:py-20"
+      >
+        <Reveal>
+          <div class="label">Error · 404</div>
+          <h1
+            class="mt-4 font-display tracking-tight text-ink"
+            style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.02;"
           >
-            <span class="rounded-full bg-bg/85 px-3 py-2 backdrop-blur-sm">404</span>
-          </div>
-          <div
-            class="absolute inset-0 -z-10 rounded-full blur-2xl"
-            style="background: conic-gradient(from 140deg, var(--g1), var(--g2), var(--g3), var(--g1)); opacity: 0.5;"
+            Lost the thread.
+            <em class="italic text-accent">Let's get you back.</em>
+          </h1>
+        </Reveal>
+
+        <Reveal delay={80}>
+          <p class="mt-7 max-w-[58ch] text-[16px] leading-relaxed text-ink-soft">
+            The link may be broken, or the page moved. Head home, or reach out
+            on LinkedIn.
+          </p>
+        </Reveal>
+
+        <Reveal delay={160} class="mt-9 flex flex-wrap items-center gap-3">
+          <a href="/" class="btn-ink">
+            Back to home <span aria-hidden="true">→</span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/itsjasonwallace"
+            target="_blank"
+            rel="noopener"
+            class="rule inline-flex items-center gap-2 rounded-[4px] px-4 py-2.5 text-sm text-ink"
           >
-          </div>
-        </div>
-        <div class="text-sm text-muted">
-          <div class="text-fg/80">Page not found</div>
-          <div>The link may be broken, or the page moved.</div>
-        </div>
-      </Reveal>
-
-      <Reveal delay={80}>
-        <h1
-          class="font-display tracking-tight"
-          style="font-size: clamp(2.75rem, 7vw, 5.75rem); line-height: 1.05; padding-top: 0.08em;"
-        >
-          <span class="block text-fg/95">Lost the thread.</span>
-          <span class="block gradient-text">Let's get you back.</span>
-        </h1>
-      </Reveal>
-
-      <Reveal delay={160} class="mt-10 flex flex-wrap items-center gap-3">
-        <a href="/" class="btn-primary group px-5 py-3 text-sm">
-          <span>Back to home</span>
-          <span class="transition group-hover:translate-x-0.5">→</span>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/itsjasonwallace"
-          target="_blank"
-          rel="noopener"
-          class="surface surface-hover inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm text-fg/85"
-        >
-          Connect on LinkedIn
-        </a>
-      </Reveal>
-
-      <div class="hairline mt-24"></div>
-    </section>
-  </main>
+            Connect on LinkedIn
+          </a>
+        </Reveal>
+      </div>
+    </main>
+  </div>
 </Base>
