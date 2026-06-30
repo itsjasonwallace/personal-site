@@ -1,5 +1,5 @@
 ---
-const linkedin = "https://www.linkedin.com/in/itsjasonwallace";
+import { LINKEDIN_URL, SITE_NAME } from "../consts";
 
 const meta = [
   { label: "Based", value: "Denver, CO" },
@@ -30,9 +30,9 @@ const meta = [
     </div>
 
     <div class="mt-6">
-      <h1 class="font-display text-[28px] leading-none tracking-tight text-ink">
-        Jason Wallace
-      </h1>
+      <p class="font-display text-[28px] leading-none tracking-tight text-ink">
+        {SITE_NAME}
+      </p>
       <p class="mt-2 font-display italic text-[15px] leading-snug text-ink-soft">
         Engineering leader & solution architect.<br />AI-native.
       </p>
@@ -58,18 +58,12 @@ const meta = [
     </div>
 
     <a
-      href={linkedin}
+      href={LINKEDIN_URL}
       target="_blank"
       rel="noopener"
       class="btn-ink mt-7 w-full justify-center"
     >
       Connect on LinkedIn <span aria-hidden="true">→</span>
     </a>
-
-    <!-- <div
-      class="mt-10 font-mono text-[10.5px] uppercase tracking-[0.18em] text-muted"
-    >
-      v.2026.05
-    </div> -->
   </div>
 </aside>

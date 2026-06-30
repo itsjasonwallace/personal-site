@@ -6,16 +6,19 @@ import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "../styles/globals.css";
 import Analytics from "@vercel/analytics/astro";
+import {
+  LINKEDIN_URL,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+} from "../consts";
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const {
-  title = "Jason Wallace — Engineering Leader & Solution Architect",
-  description = "Twenty-four years of full-lifecycle engineering. Twelve leading the people who do it. Today, leading Wealth & Asset Management Engineering at Charles Schwab — and looking for what's next.",
-} = Astro.props;
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL("/og.png", Astro.site).href;
@@ -24,18 +27,21 @@ const portrait = new URL("/portrait.webp", Astro.site).href;
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Jason Wallace",
+  name: SITE_NAME,
   jobTitle: "Senior Engineering Manager",
   worksFor: { "@type": "Organization", name: "Charles Schwab" },
   url: canonical,
   image: portrait,
-  sameAs: ["https://www.linkedin.com/in/itsjasonwallace"],
+  sameAs: [LINKEDIN_URL],
 };
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />

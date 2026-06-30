@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Sidebar from "../components/Sidebar.astro";
 import Reveal from "../components/Reveal.astro";
+import { LINKEDIN_URL } from "../consts";
 ---
 
 <Base
@@ -37,7 +38,7 @@ import Reveal from "../components/Reveal.astro";
             Back to home <span aria-hidden="true">→</span>
           </a>
           <a
-            href="https://www.linkedin.com/in/itsjasonwallace"
+            href={LINKEDIN_URL}
             target="_blank"
             rel="noopener"
             class="rule inline-flex items-center gap-2 rounded-[4px] px-4 py-2.5 text-sm text-ink"

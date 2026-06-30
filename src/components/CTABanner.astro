@@ -1,6 +1,6 @@
 ---
 import Reveal from "./Reveal.astro";
-const linkedin = "https://www.linkedin.com/in/itsjasonwallace";
+import { LINKEDIN_URL } from "../consts";
 ---
 
 <Reveal>
@@ -16,10 +16,9 @@ const linkedin = "https://www.linkedin.com/in/itsjasonwallace";
         >
           If the role is real and the work is hard, let's compare notes.
         </h2>
-       
       </div>
       <a
-        href={linkedin}
+        href={LINKEDIN_URL}
         target="_blank"
         rel="noopener"
         class="btn-accent shrink-0 whitespace-nowrap"

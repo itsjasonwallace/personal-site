@@ -8,8 +8,6 @@
   --color-muted: #8a8377;
   --color-rule: #e6e1d1;
   --color-accent: #8b2a1f;
-  --color-accent-soft: #c36a5d;
-  --color-status: #3ebe5a;
 
   --font-sans: "Inter Variable", Inter, system-ui, sans-serif;
   --font-display: "Instrument Serif", ui-serif, Georgia, serif;
@@ -72,18 +70,21 @@
     @apply inline-flex items-center gap-2 rounded bg-accent px-4 py-2.5 text-sm font-medium text-paper transition-colors duration-200 hover:bg-accent/90;
   }
 
-  .hairline {
-    @apply h-px bg-rule;
+  .section-title {
+    font-size: clamp(1.85rem, 3vw, 2.5rem);
+    line-height: 1.1;
   }
 }
 
-[data-reveal] {
+/* Reveal-on-scroll only hides content when JS is available, so the page
+   stays fully visible if scripts are disabled or fail to load. */
+.js [data-reveal] {
   opacity: 0;
   transform: translateY(10px);
   will-change: opacity, transform;
 }
 
-[data-reveal][data-revealed="true"] {
+.js [data-reveal][data-revealed="true"] {
   opacity: 1;
   transform: translateY(0);
   transition:
@@ -92,7 +93,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
+  .js [data-reveal] {
     opacity: 1;
     transform: none;
   }
