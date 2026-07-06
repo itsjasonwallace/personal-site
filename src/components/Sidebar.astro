@@ -13,32 +13,45 @@ const meta = [
     value: "Director / Principal / Enterprise / Solution Architect",
   },
 ];
+
 ---
 
 <aside class="bg-ivory">
-  <div class="flex flex-col px-7 py-7 lg:sticky lg:top-0">
-    <div class="overflow-hidden rounded-[4px]">
-      <img
-        src="/portrait.webp"
-        alt="Jason Wallace — portrait"
-        width="1280"
-        height="1600"
-        loading="eager"
-        fetchpriority="high"
-        class="aspect-[4/5] h-full w-full object-cover grayscale"
-      />
+  <div
+    class="flex flex-col px-6 py-6 sm:px-7 sm:py-7 lg:sticky lg:top-0 lg:max-h-dvh lg:overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+  >
+    <div class="flex items-center gap-5 lg:block">
+      <div
+        class="w-24 shrink-0 overflow-hidden rounded-[4px] sm:w-28 lg:w-auto"
+      >
+        <img
+          src="/portrait.webp"
+          alt="Jason Wallace — portrait"
+          width="1280"
+          height="1600"
+          loading="eager"
+          fetchpriority="high"
+          class="aspect-square h-full w-full object-cover object-[50%_20%] grayscale lg:aspect-[4/5] lg:object-center"
+        />
+      </div>
+
+      <div class="min-w-0 lg:mt-6">
+        <p
+          class="font-display text-[24px] leading-none tracking-tight text-ink lg:text-[28px]"
+        >
+          {SITE_NAME}
+        </p>
+        <p
+          class="mt-2 font-display italic text-[14px] leading-snug text-ink-soft lg:text-[15px]"
+        >
+          Engineering leader & solution architect.<br />AI-native.
+        </p>
+      </div>
     </div>
 
-    <div class="mt-6">
-      <p class="font-display text-[28px] leading-none tracking-tight text-ink">
-        {SITE_NAME}
-      </p>
-      <p class="mt-2 font-display italic text-[15px] leading-snug text-ink-soft">
-        Engineering leader & solution architect.<br />AI-native.
-      </p>
-    </div>
-
-    <div class="mt-7 space-y-5">
+    <div
+      class="mt-6 grid gap-x-8 gap-y-5 sm:grid-cols-3 lg:mt-7 lg:grid-cols-1"
+    >
       {
         meta.map((m) => (
           <div>
@@ -61,7 +74,7 @@ const meta = [
       href={LINKEDIN_URL}
       target="_blank"
       rel="noopener"
-      class="btn-ink mt-7 w-full justify-center"
+      class="btn-ink mt-7 w-full justify-center sm:w-auto sm:self-start lg:w-full lg:self-auto"
     >
       Connect on LinkedIn <span aria-hidden="true">→</span>
     </a>

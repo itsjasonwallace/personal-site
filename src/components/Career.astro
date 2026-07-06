@@ -40,24 +40,25 @@ const chapters = [
 
   <Reveal delay={80}>
     <ol
-      class="card mt-7 grid grid-cols-[2.5rem_1fr_auto] gap-x-5 divide-y divide-rule sm:grid-cols-[2.5rem_minmax(0,1.4fr)_minmax(0,1fr)_auto]"
+      class="card mt-7 grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-5 divide-y divide-rule sm:grid-cols-[2.5rem_minmax(0,1.4fr)_minmax(0,1fr)_auto]"
     >
       {
         chapters.map((c, i) => (
-          <li class="col-span-full grid grid-cols-subgrid items-center px-6 py-5">
-            <span class="font-mono text-[12px] text-accent">
+          <li class="col-span-full grid grid-cols-subgrid items-start px-6 py-5 sm:items-center">
+            <span class="pt-0.5 font-mono text-[12px] text-accent sm:pt-0">
               {String(i + 1).padStart(2, "0")}
             </span>
-            <span class="font-display text-[18px] leading-tight text-ink sm:text-[19px]">
-              {c.role}
-            </span>
-            <span class="hidden font-display italic text-[15px] text-ink-soft sm:block">
-              {c.company}
-            </span>
-            <span class="font-mono text-[11.5px] text-muted">{c.dates}</span>
-            <span class="col-start-2 col-end-4 font-display italic text-[14px] text-ink-soft sm:hidden">
-              {c.company}
-            </span>
+            <div class="min-w-0 sm:col-span-3 sm:grid sm:grid-cols-subgrid sm:items-center">
+              <span class="block font-display text-[18px] leading-tight text-ink sm:text-[19px]">
+                {c.role}
+              </span>
+              <span class="mt-1 block font-display italic text-[14px] text-ink-soft sm:mt-0 sm:text-[15px]">
+                {c.company}
+              </span>
+              <span class="mt-2 block font-mono text-[11.5px] text-muted sm:mt-0">
+                {c.dates}
+              </span>
+            </div>
           </li>
         ))
       }

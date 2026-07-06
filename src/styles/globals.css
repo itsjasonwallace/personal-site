@@ -5,7 +5,7 @@
   --color-paper: #fbfaf6;
   --color-ink: #1a1a1a;
   --color-ink-soft: #4a4a4a;
-  --color-muted: #8a8377;
+  --color-muted: #6b6558;
   --color-rule: #e6e1d1;
   --color-accent: #8b2a1f;
 
@@ -38,6 +38,10 @@
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
     border-radius: 4px;
+  }
+
+  section[id] {
+    scroll-margin-top: 2.5rem;
   }
 }
 
