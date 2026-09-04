@@ -3,11 +3,14 @@ import Reveal from "./Reveal.astro";
 import StatsBar from "./StatsBar.astro";
 import { SITE_DESCRIPTION } from "../consts";
 
-const eyebrows = ["Engineering Leader", "Solution Architect", "AI-Native"];
+// Stands in for the sidebar meta block below lg, where that block is hidden so
+// the headline reaches the first viewport. Hidden at lg, where the meta returns
+// and would otherwise repeat these facts beside the hero.
+const eyebrows = ["Denver, CO", "Charles Schwab", "Building since 2002"];
 ---
 
 <section class="pt-2 md:pt-4">
-  <Reveal>
+  <Reveal onLoad class="lg:hidden">
     <div
       class="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.18em] text-accent"
     >
@@ -22,9 +25,9 @@ const eyebrows = ["Engineering Leader", "Solution Architect", "AI-Native"];
     </div>
   </Reveal>
 
-  <Reveal delay={80}>
+  <Reveal onLoad>
     <h1
-      class="mt-7 font-display tracking-tight text-ink"
+      class="mt-7 font-display tracking-tight text-ink lg:mt-0"
       style="font-size: clamp(2.5rem, 5.4vw, 4.5rem); line-height: 1.02;"
     >
       I lead engineering teams and <em class="italic text-accent"
@@ -33,13 +36,13 @@ const eyebrows = ["Engineering Leader", "Solution Architect", "AI-Native"];
     </h1>
   </Reveal>
 
-  <Reveal delay={160}>
+  <Reveal onLoad delay={80}>
     <p class="mt-7 max-w-[58ch] text-[17px] leading-relaxed text-ink-soft">
       {SITE_DESCRIPTION}
     </p>
   </Reveal>
 
-  <Reveal delay={220} class="mt-10">
+  <Reveal onLoad delay={160} class="mt-10">
     <StatsBar />
   </Reveal>
 </section>

@@ -10,7 +10,6 @@ const groups = [
       "Mentoring leaders",
       "Stakeholder alignment",
       "Budget & roadmap",
-      "Agile · CI/CD · TDD",
     ],
   },
   {
@@ -22,6 +21,7 @@ const groups = [
       "Distributed data",
       "Cloud-native (Azure / GCP / CF)",
       "SaaS platforms",
+      "Agile · CI/CD · TDD",
     ],
   },
   {
@@ -31,9 +31,8 @@ const groups = [
       "Java",
       "TypeScript",
       "Node.js",
-      "MS SQL Server",
+      "SQL Server",
       "Cosmos DB",
-      "NoSQL",
       "Oracle",
     ],
   },
@@ -41,7 +40,7 @@ const groups = [
     label: "Applied AI",
     items: [
       "Agentic systems",
-      "Production AI tooling",
+      "AI developer tooling",
       "Evals & guardrails",
       "AI policy & rollout",
       "RAG",
@@ -67,11 +66,11 @@ const groups = [
             <div class="font-mono text-[10.5px] uppercase tracking-[0.2em] text-muted">
               {g.label}
             </div>
-            <div class="mt-4 flex flex-wrap gap-1.5">
+            <ul role="list" class="mt-4 flex flex-wrap gap-1.5">
               {g.items.map((it) => (
-                <span class="chip">{it}</span>
+                <li class="chip">{it}</li>
               ))}
-            </div>
+            </ul>
           </div>
         </Reveal>
       ))

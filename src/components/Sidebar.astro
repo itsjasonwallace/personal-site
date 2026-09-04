@@ -6,77 +6,82 @@ const meta = [
   {
     label: "Now",
     value: "Senior Engineering Manager,",
-    line2: "Charles Schwab — WAME",
+    line2: "Charles Schwab",
   },
   {
     label: "Focus",
-    value: "Org design · Platform & enterprise architecture · AI-native engineering",
+    value:
+      "Org design · Platform & enterprise architecture · AI-native engineering",
   },
 ];
-
 ---
 
 <aside class="bg-ivory">
   <div
-    class="flex flex-col px-6 py-6 sm:px-7 sm:py-7 lg:sticky lg:top-0 lg:max-h-dvh lg:overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    class="flex flex-col px-6 py-6 sm:px-7 sm:py-7 lg:sticky lg:top-0 lg:h-dvh print:static print:h-auto"
   >
-    <div class="flex items-center gap-5 lg:block">
-      <div
-        class="w-24 shrink-0 overflow-hidden rounded-[4px] sm:w-28 lg:w-auto"
-      >
-        <img
-          src="/portrait.webp"
-          alt="Jason Wallace — portrait"
-          width="1280"
-          height="1600"
-          loading="eager"
-          fetchpriority="high"
-          class="aspect-square h-full w-full object-cover object-[50%_20%] grayscale lg:aspect-[4/5] lg:object-center"
-        />
-      </div>
-
-      <div class="min-w-0 lg:mt-6">
-        <h2
-          class="font-display text-[24px] leading-none tracking-tight text-ink lg:text-[28px]"
-        >
-          {SITE_NAME}
-        </h2>
-        <p
-          class="mt-2 font-display italic text-[14px] leading-snug text-ink-soft lg:text-[15px]"
-        >
-          Engineering leader & solution architect.<br />AI-native.
-        </p>
-      </div>
-    </div>
-
+    <!-- Everything above the call to action scrolls on short desktop
+         viewports; the button below stays pinned so it is always reachable.
+         The scrollbar is hidden because nothing actionable can fall below the
+         fold: the content that clips is the tail of the descriptive meta. -->
     <div
-      class="mt-6 grid gap-x-8 gap-y-5 sm:grid-cols-3 lg:mt-7 lg:grid-cols-1"
+      class="lg:min-h-0 lg:flex-1 lg:overflow-y-auto print:overflow-visible [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
-      {
-        meta.map((m) => (
-          <div>
-            <div class="label">{m.label}</div>
-            <div class="mt-1.5 text-[13.5px] leading-snug text-ink">
-              {m.value}
-              {m.line2 && (
-                <>
-                  <br />
-                  {m.line2}
-                </>
-              )}
+      <div class="flex items-center gap-5 lg:block">
+        <div class="w-24 shrink-0 overflow-hidden rounded-[4px] sm:w-28 lg:w-auto">
+          <img
+            src="/portrait.webp"
+            alt="Jason Wallace — portrait"
+            width="1280"
+            height="1600"
+            loading="eager"
+            fetchpriority="high"
+            class="aspect-square h-full w-full object-cover object-[50%_20%] grayscale lg:aspect-[4/5] lg:object-center"
+          />
+        </div>
+
+        <div class="min-w-0 lg:mt-6">
+          <h2
+            class="font-display text-[24px] leading-none tracking-tight text-ink lg:text-[28px]"
+          >
+            {SITE_NAME}
+          </h2>
+          <p
+            class="mt-2 font-display italic text-[14px] leading-snug text-ink-soft lg:text-[15px]"
+          >
+            Engineering leader & solution architect.<br />AI-native.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 hidden gap-x-8 gap-y-5 lg:mt-7 lg:grid lg:grid-cols-1">
+        {
+          meta.map((m) => (
+            <div>
+              <div class="label">{m.label}</div>
+              <div class="mt-1.5 text-[13.5px] leading-snug text-ink">
+                {m.value}
+                {m.line2 && (
+                  <>
+                    <br />
+                    {m.line2}
+                  </>
+                )}
+              </div>
             </div>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
     </div>
 
     <a
       href={LINKEDIN_URL}
       target="_blank"
-      rel="noopener"
+      rel="noopener noreferrer"
       class="btn-ink mt-7 w-full justify-center sm:w-auto sm:self-start lg:w-full lg:self-auto"
     >
-      Connect on LinkedIn <span aria-hidden="true">→</span>
+      Connect on LinkedIn <span class="sr-only">(opens in a new tab)</span>
+      <span aria-hidden="true">→</span>
     </a>
   </div>
 </aside>

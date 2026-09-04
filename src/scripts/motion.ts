@@ -1,4 +1,8 @@
-const revealEls = document.querySelectorAll<HTMLElement>("[data-reveal]");
+// Elements marked data-reveal="load" animate from CSS on page load and must
+// not be observed, or they would be held hidden until they scroll into view.
+const revealEls = document.querySelectorAll<HTMLElement>(
+  '[data-reveal]:not([data-reveal="load"])'
+);
 if (revealEls.length && "IntersectionObserver" in window) {
   const io = new IntersectionObserver(
     (entries) => {

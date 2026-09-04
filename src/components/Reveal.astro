@@ -3,10 +3,25 @@ interface Props {
   as?: string;
   delay?: number;
   class?: string;
+  /**
+   * Animate on load rather than on scroll. Use for above-the-fold content so
+   * the LCP element is not held at opacity 0 until the observer fires.
+   */
+  onLoad?: boolean;
 }
-const { as: Tag = "div", delay = 0, class: className = "" } = Astro.props;
+const {
+  as: Tag = "div",
+  delay = 0,
+  class: className = "",
+  onLoad = false,
+} = Astro.props;
 ---
 
-<Tag data-reveal data-reveal-delay={delay} class={className}>
+<Tag
+  data-reveal={onLoad ? "load" : true}
+  data-reveal-delay={onLoad ? undefined : delay}
+  style={onLoad && delay ? `--reveal-delay:${delay}ms` : undefined}
+  class={className}
+>
   <slot />
 </Tag>

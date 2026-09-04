@@ -8,10 +8,6 @@ const year = new Date().getFullYear();
   <footer
     class="mt-6 flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[0.18em] text-muted"
   >
-    <span>© <span data-year>{year}</span> Jason Wallace</span>
-    <script is:inline>
-      document.querySelector("[data-year]").textContent =
-        new Date().getFullYear();
-    </script>
+    <span>© {year} Jason Wallace</span>
   </footer>
 </section>

@@ -83,6 +83,17 @@
     font-size: clamp(1.85rem, 3vw, 2.5rem);
     line-height: 1.1;
   }
+
+  /* Offscreen until focused. Deliberately not sr-only/not-sr-only, which
+     resets padding and collapses the button when it becomes visible. */
+  .skip-link {
+    @apply fixed top-3 left-3 z-50 rounded bg-ink px-4 py-2.5 text-sm font-medium text-paper;
+    transform: translateY(-200%);
+  }
+
+  .skip-link:focus-visible {
+    transform: none;
+  }
 }
 
 /* Reveal-on-scroll only hides content when JS is available, so the page
@@ -101,9 +112,51 @@
     transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
+/* Above-the-fold content animates on load instead of waiting for the
+   IntersectionObserver, so the LCP element is never gated on JS execution. */
+.js [data-reveal="load"] {
+  opacity: 1;
+  transform: none;
+  animation: reveal-in 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal] {
     opacity: 1;
     transform: none;
+  }
+
+  .js [data-reveal="load"] {
+    animation: none;
+  }
+}
+
+/* Reveal state and dark button fills both break printing: unrevealed sections
+   print blank, and browsers drop backgrounds so cream-on-ink text vanishes. */
+@media print {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+
+  .btn-ink,
+  .btn-accent {
+    background: none;
+    color: var(--color-ink);
+    border: 1px solid var(--color-rule);
+  }
+
+  .skip-link {
+    display: none;
   }
 }
