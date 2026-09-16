@@ -2,11 +2,12 @@
 import Reveal from "./Reveal.astro";
 import StatsBar from "./StatsBar.astro";
 import { SITE_DESCRIPTION } from "../consts";
+import { careerStartYear } from "../data/career";
 
 // Stands in for the sidebar meta block below lg, where that block is hidden so
 // the headline reaches the first viewport. Hidden at lg, where the meta returns
 // and would otherwise repeat these facts beside the hero.
-const eyebrows = ["Denver, CO", "Charles Schwab", "Building since 2002"];
+const eyebrows = ["Denver, CO", "Charles Schwab", `Building since ${careerStartYear}`];
 ---
 
 <section class="pt-2 md:pt-4">

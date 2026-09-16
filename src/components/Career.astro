@@ -1,33 +1,7 @@
 ---
 import Reveal from "./Reveal.astro";
 
-const chapters = [
-  {
-    role: "Senior Engineering Manager",
-    company: "Charles Schwab",
-    dates: "May 2019 — Present",
-  },
-  {
-    role: "Associate Director of Development",
-    company: "Galliard Capital Management",
-    dates: "Dec 2014 — Apr 2019",
-  },
-  {
-    role: "Solution Architect",
-    company: "Wells Fargo",
-    dates: "Nov 2009 — Nov 2014",
-  },
-  {
-    role: "Director of Technology · Co-founder",
-    company: "Skyline Document Services",
-    dates: "Jan 2007 — Dec 2010",
-  },
-  {
-    role: "Lead Software Engineer",
-    company: "Lighthouse eDiscovery",
-    dates: "Jan 2002 — Dec 2006",
-  },
-];
+import { chapters, formatDates } from "../data/career";
 ---
 
 <section id="career">
@@ -56,7 +30,7 @@ const chapters = [
                 {c.company}
               </span>
               <span class="mt-2 block font-mono text-[11.5px] text-muted sm:mt-0">
-                {c.dates}
+                {formatDates(c)}
               </span>
             </div>
           </li>
