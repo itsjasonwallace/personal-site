@@ -1,0 +1,50 @@
+Create a flattering, polished professional headshot of the person in the attached reference photos, for use as a LinkedIn and company profile photo.
+
+LIKENESS (highest priority)
+- The result must be clearly recognizable as the person in the references. Preserve facial structure, hairline, hair color, eye shape and color, nose, ears, jawline, and skin tone.
+- Present him looking about 5 years younger than in the references: well-rested, healthy, and refreshed. Achieve this through retouching, lighting, and grooming, not by changing facial structure.
+- If references differ, favor the most recent, well-lit, front-facing photos.
+
+RETOUCHING
+- High-end executive portrait retouching, like a professional corporate or magazine profile photo.
+- Smooth, even, healthy skin with a subtle natural glow. Significantly soften forehead lines, crow's feet, smile lines, and under-eye lines. Remove dark circles, redness, and blotchiness. Minimal visible pores.
+- Skin should still look like real skin, not plastic or waxy.
+- Bright, clear, well-rested eyes with clean whites and natural catchlights.
+- Freshly groomed: clean shave with minimal stubble shadow (unless facial hair is present in the references).
+- Healthy, full-looking hair with a natural sheen, neatly styled, natural hairline preserved.
+- Natural, clean teeth (not overly white or uniform).
+
+EXPRESSION AND POSE
+- Warm, confident, approachable smile with some teeth showing and relaxed, engaged eyes.
+- Body angled about 20 degrees away from camera, head turned back so the face is 10–15 degrees off square, eyes looking into the lens.
+- Camera slightly above eye level. Chin slightly forward and down to define the jawline. Upright, relaxed posture.
+
+WARDROBE
+- Well-fitted navy suit jacket, crisp white dress shirt, open collar, no tie. Collar and lapels natural and correctly formed.
+
+LIGHTING
+- Soft, flattering, front-weighted light from a large diffused source (large octabox or diffused beauty dish) slightly above the face, with generous fill so lines and texture are not emphasized by shadow.
+- Low-to-moderate contrast, gentle and luminous. Slightly warm white balance for a healthy skin tone.
+- Subtle rim light to separate the head and shoulders from the background.
+
+CAMERA
+- Full-frame camera, 85–105mm portrait lens at f/2.8, for a slightly soft, flattering rendering with the eyes in sharp focus.
+
+BACKGROUND
+- Light neutral-to-warm gray seamless backdrop with a soft gradient, slightly brighter behind the head. Clean and uncluttered. Add a subtle, natural light falloff to the backdrop: slightly brighter directly behind the head and shoulders, gently darker toward the edges and corners, like a real studio background light. Keep the same warm light gray tone.
+
+COMPOSITION (will be displayed in a circular crop)
+- Square image, high resolution (2048x2048 or larger).
+- Face centered horizontally, eyes roughly one-third down from the top.
+- Head (chin to top of hair) fills about 40–45% of the frame height, with clear space above the hair. Crop at mid-chest, showing both shoulders.
+- Keep all important details within the central circle; corners will be cropped.
+
+AVOID
+- Looking older or more tired than the references.
+- Deep or emphasized wrinkles, forehead lines, crow's feet, under-eye bags, dark circles, or added gray hair.
+- Exaggerated pores, oversharpening, harsh detail, harsh shadows, ruddy or blotchy skin, dull complexion.
+- Airbrushed, plastic, waxy, or CGI-looking skin; illustration or painterly style.
+- Messy, spiky, or unkempt hair; glowing edges or blurred/merged hairlines.
+- Distorted ears, collars, buttons, or lapels.
+- Any accessories or features not present in the references.
+- Text, logos, watermarks, or props.

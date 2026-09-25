@@ -61,50 +61,54 @@ const h = (type, style, ...children) => ({
 
 // ---------------------------------------------------------------- OG image
 
-// The banner keeps the original dark treatment: bold sans on near-black, which
-// survives the thumbnail scale a feed renders it at. The headshot panel was
-// recovered from the original composite and lives in assets/, outside public/,
-// so it is a build input and never ships to visitors.
-const DARK = "#141518";
-const HEADSHOT_W = 355;
-const HEADSHOT_H = 630;
+// A light studio ground rather than the earlier near-black: the navy jacket
+// vanished into a dark fill at feed thumbnail size. The portrait lives in
+// assets/, outside public/, so it is a build input and never ships to visitors.
+const OG_W = 1200;
+const OG_H = 630;
 
-// The recovered panel carries the original's vignette, which is a shade lighter
-// than the flat fill and leaves a visible vertical seam where the two meet.
-// Ramping alpha across the left edge dissolves it. The subject starts well
-// right of the ramp, so nothing of him is lost.
-const FEATHER = 60;
-const mask = Buffer.alloc(HEADSHOT_W * HEADSHOT_H * 4);
-for (let y = 0; y < HEADSHOT_H; y++) {
-  for (let x = 0; x < HEADSHOT_W; x++) {
-    const i = (y * HEADSHOT_W + x) * 4;
-    mask[i] = mask[i + 1] = mask[i + 2] = 255;
-    mask[i + 3] = x >= FEATHER ? 255 : Math.round((x / FEATHER) * 255);
-  }
+// Source crop, in the portrait's own pixels. The left edge sits in pure
+// backdrop on every row (the jacket starts further right), and the right edge
+// clears the ear, so the shoulder exits at the frame edge like a normal crop.
+const CROP = { left: 200, top: 0, width: 1180, height: 1615 };
+const PANEL_W = Math.round((CROP.width * OG_H) / CROP.height);
+const FILL_W = OG_W - PANEL_W;
+
+// The backdrop is a vignette, so no flat fill can meet it without a seam.
+// Stretching a thin column of the backdrop sideways continues its exact
+// top-to-bottom gradient across the text side instead.
+const portrait = sharp(asset("Self_Sept2026.jpg"));
+const [panel, fill] = await Promise.all([
+  portrait.clone().extract(CROP).resize(PANEL_W, OG_H).toBuffer(),
+  portrait
+    .clone()
+    .extract({ ...CROP, width: 4 })
+    .resize(FILL_W, OG_H, { fit: "fill" })
+    .toBuffer(),
+]);
+
+// The stretched backdrop is mid-gray, too dark behind body-size ink. A paper
+// wash lifts the text side and fades out before the photo. The fade follows a
+// smoothstep, because a linear ramp's abrupt end reads as a faint vertical
+// line where it meets the photo.
+const WASH_FROM = FILL_W - 420;
+const WASH_MAX = 0.9;
+const washStops = [`rgba(251,250,246,${WASH_MAX}) 0px`];
+for (let i = 0; i <= 10; i++) {
+  const t = i / 10;
+  const a = WASH_MAX * (1 - t * t * (3 - 2 * t));
+  washStops.push(`rgba(251,250,246,${a.toFixed(3)}) ${Math.round(WASH_FROM + t * 420)}px`);
 }
 
-const headshotPng = await sharp(asset("og-headshot.png"))
-  .ensureAlpha()
-  .composite([
-    {
-      input: mask,
-      raw: { width: HEADSHOT_W, height: HEADSHOT_H, channels: 4 },
-      blend: "dest-in",
-    },
-  ])
-  .png()
-  .toBuffer();
-const headshotUri = `data:image/png;base64,${headshotPng.toString("base64")}`;
-
-const ogTree = h(
+const textTree = h(
   "div",
   {
     display: "flex",
-    width: 1200,
-    height: 630,
-    background: DARK,
-    color: "#ffffff",
+    width: OG_W,
+    height: OG_H,
+    color: INK,
     fontFamily: "Inter",
+    backgroundImage: `linear-gradient(90deg, ${washStops.join(", ")})`,
   },
   h(
     "div",
@@ -112,47 +116,38 @@ const ogTree = h(
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      flex: 1,
-      paddingLeft: 88,
-      paddingRight: 40,
+      width: FILL_W,
+      paddingLeft: 80,
     },
+    h("div", { display: "flex", width: 56, height: 5, background: ACCENT, marginBottom: 28 }),
     h(
       "div",
-      { display: "flex", fontWeight: 700, fontSize: 76, lineHeight: 1.08, letterSpacing: -2.5 },
+      { display: "flex", fontWeight: 700, fontSize: 70, lineHeight: 1.08, letterSpacing: -2.2 },
       "Jason Wallace"
     ),
     h(
       "div",
-      { display: "flex", fontWeight: 700, fontSize: 76, lineHeight: 1.08, letterSpacing: -2.5 },
+      { display: "flex", fontWeight: 700, fontSize: 70, lineHeight: 1.08, letterSpacing: -2.2 },
       "Engineering Leader"
     ),
     h(
       "div",
-      {
-        display: "flex",
-        fontWeight: 400,
-        fontSize: 28,
-        color: "#c8c8cf",
-        marginTop: 20,
-      },
+      { display: "flex", fontWeight: 400, fontSize: 27, color: INK_SOFT, marginTop: 22 },
       "Engineering · Architecture · Leadership · AI"
     )
-  ),
-  {
-    type: "img",
-    props: {
-      src: headshotUri,
-      width: HEADSHOT_W,
-      height: 630,
-      style: { objectFit: "cover" },
-    },
-  }
+  )
 );
 
-const ogSvg = await satori(ogTree, { width: 1200, height: 630, fonts });
-// Lossless, but worth the encoder effort: the defaults leave this photo-heavy
-// frame around 500KB, where these settings land near 110KB.
-await sharp(Buffer.from(ogSvg))
+const textSvg = await satori(textTree, { width: OG_W, height: OG_H, fonts });
+// Lossless, but worth the encoder effort on a photo-heavy frame.
+await sharp({
+  create: { width: OG_W, height: OG_H, channels: 3, background: PAPER },
+})
+  .composite([
+    { input: fill, left: 0, top: 0 },
+    { input: panel, left: FILL_W, top: 0 },
+    { input: Buffer.from(textSvg), left: 0, top: 0 },
+  ])
   .png({ compressionLevel: 9, effort: 10 })
   .toFile(pub("og.png"));
 

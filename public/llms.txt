@@ -4,7 +4,7 @@
 
 ## About
 
-- Role: Senior Engineering Manager, Charles Schwab — Wealth & Asset Management Engineering
+- Role: Senior Engineering Manager, Wealth & Asset Management Engineering at Charles Schwab
 - Focus: Org design, platform & enterprise architecture, AI-native engineering
 - Location: Denver, CO
 - LinkedIn: https://www.linkedin.com/in/itsjasonwallace
